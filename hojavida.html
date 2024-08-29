@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Hoja de Vida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            background: #35424a;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header h1 {
+            margin: 0;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        img {
+            display: block;
+            margin: auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #35424a;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mi Hoja de Vida</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <img src="imagen_m.jpg" alt="Foto de perfil">
+        
+        <section id="informacion-personal">
+            <h2>Información Personal</h2>
+            <p><strong>Nombre:</strong> Maidy Sarmiento Valencia</p>
+            <p><strong>Email:</strong> msarmiento@gsiconsultoria.com</p>
+            <p><strong>Teléfono:</strong> 3028687911</p>
+        </section>
+
+        <section id="educacion">
+            <h2>Educación</h2>
+            <ul id="lista-educacion">
+                <li>Grado en Ingeniería Administrativa - Universidad Nacional de Colomba (2003-2008)</li>
+                <li>Máster en Ciencia de Datos - Universidad ABC (2019-2021)</li>
+            </ul>
+            <button onclick="toggleForm('educacion')">Añadir Educación</button>
+            <div id="form-educacion" class="hidden">
+                <input type="text" id="nueva-educacion" placeholder="Nueva educación">
+                <button onclick="agregarItem('educacion')">Agregar</button>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <h2>Experiencia Laboral</h2>
+            <ul id="lista-experiencia">
+                <li>Consultor Funcional SAP MM- GSI Contulting 2011-2013</li>
+                <li>Mamá - 2013-presente</li>
+                <li>CEO - Marín Raume 2021-2023</li>
+            </ul>
+            <button onclick="toggleForm('experiencia')">Añadir Experiencia</button>
+            <div id="form-experiencia" class="hidden">
+                <input type="text" id="nueva-experiencia" placeholder="Nueva experiencia">
+                <button onclick="agregarItem('experiencia')">Agregar</button>
+            </div>
+        </section>
+
+        <section id="referencias">
+            <h2>Referencias</h2>
+            <ul id="lista-referencias">
+                <li>Juan Pérez - Gerente de Proyecto en Empresa XYZ</li>
+                <li>María Gómez - Profesora de Universidad ABC</li>
+            </ul>
+            <button onclick="toggleForm('referencias')">Añadir Referencia</button>
+            <div id="form-referencias" class="hidden">
+                <input type="text" id="nueva-referencia" placeholder="Nueva referencia">
+                <button onclick="agregarItem('referencias')">Agregar</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleForm(seccion) {
+            var form = document.getElementById('form-' + seccion);
+            form.classList.toggle('hidden');
+        }
+
+        function agregarItem(seccion) {
+            var input = document.getElementById('nueva-' + seccion);
+            var lista = document.getElementById('lista-' + seccion);
+            var nuevoItem = document.createElement('li');
+            nuevoItem.textContent = input.value;
+            lista.appendChild(nuevoItem);
+            input.value = '';
+            toggleForm(seccion);
+        }
+    </script>
+</body>
+</html>
